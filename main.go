@@ -1,10 +1,11 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"math/rand"
 	"os"
+
+	"github.com/eiannone/keyboard"
 )
 
 //In this version of the game, the player won't die immediately after being hit by the wizard.
@@ -32,26 +33,24 @@ func gameLoop(playerHealth int) {
 	for playerHealth >= 0 {
 		fmt.Printf("A wild wizard named %s appeared. He is level %d\n", generateWizard().Name, generateWizard().Level)
 		fmt.Println("Press A to Attack\nPress B to Run Away")
-		reader := bufio.NewReader(os.Stdin)
-		char, _, err := reader.ReadRune()
-		if err != nil {
-			fmt.Print(err)
-		}
+		char, _, err := keyboard.GetSingleKey()
 		keyCode := char
 		inputInterpreter(int(keyCode))
+		if err != nil {
+			panic(err)
+		}
 	}
 }
 func inputInterpreter(char int) {
 	switch char {
-	case 65:
+	case 65, 97:
 		fmt.Println("Pressed A")
-	case 97:
-		fmt.Println("Pressed a")
-	case 66:
+	case 66, 98:
 		fmt.Println("Pressed B")
-	case 98:
-		fmt.Println("Pressed b")
+	case 0:
+		os.Exit(0)
 	default:
+		fmt.Println(char)
 		return
 	}
 }
