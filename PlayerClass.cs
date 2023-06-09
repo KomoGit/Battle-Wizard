@@ -14,7 +14,7 @@ namespace Battle_Wizard
             switch (this.Player) //These are the names for player. Only serve easter egg purposes, nothing else.
             {  //This class will also hold level system, experience, and play exclusive spells.
                 case "Elnur":
-                    Console.WriteLine("Welcome God! " + "\nPress any button to begin.");
+                    Console.WriteLine("Welcome Developer! " + "\nPress any button to begin.");
                     Console.ReadKey();
                     break;
                 case "Snake":
