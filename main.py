@@ -27,11 +27,12 @@ def player_name_prompt():
             return userinput
 
 
-def main():
-    playerName = player_name_prompt()
-    playerLevel = generate_random_int()
-    print(f"Your name is {playerName}? What a stupid name! You are a level {playerLevel} wizard.")
-    input("Press any key to being...")
-    gameLoopActive = True
-    userInput = input()
-    game_loop(gameLoopActive)
+playerName = player_name_prompt()
+playerLevel = generate_random_int()
+print(f"Your name is {playerName}? What a stupid name! You are a level {playerLevel} wizard.")
+input("Press any key to being...")
+gameLoopActive = True
+userInput = input()
+game_loop(gameLoopActive)
+
+
