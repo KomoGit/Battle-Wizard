@@ -4,18 +4,15 @@ import random as rnd
 def GenerateRandomInt():
     return rnd.randrange(0,11)
 
-def GameLoop(gameActive,rawUserInput):
+def GameLoop(gameActive):
     while(gameActive):
-        print("Hello Game is running...")
+        print("Press A to Attack || Press B to Run Away")
+        userInput = input().upper
+        # ValidateUserInput(userInput)
 
-def TakeUserInput(rawUserInput):
-    userInput = rawUserInput.upper()
-    if(userInput == "A"):
-        print(f"Player pressed {userInput}")
-    elif(userInput == "B"):
-        print(f"PLayer pressed {userInput}")
-
-
+# def ValidateUserInput(userInput):
+#    if(userInput == "A"):
+#        return  
    
 playerName = input("Greetings Wizard, Insert your name: ")
 playerLevel = GenerateRandomInt()
