@@ -5,7 +5,12 @@ class Wizard:
         self.Name = name #GenerateWizardName() 
         self.Level = level #GenerateWizardLevel()
 
-     
-        
+def BattleWizard(playerLevel ):
+    if(Level <= playerLevel):
+        return True
+    else:
+        return False
+             
+Name = ""
+Level = 0
 
-    
