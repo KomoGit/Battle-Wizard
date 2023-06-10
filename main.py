@@ -45,9 +45,12 @@ def player_name_prompt():
             return userinput
 
 
-playerName = player_name_prompt()
-playerLevel = gen.generate_random_int()
-print(f"Your name is {playerName}? What a stupid name! You are a level {playerLevel} wizard.")
-game_loop()
-print("Do you wish to play again? A (Yes) | B (No)")
-player_input = input()
+while True:
+    playerName = player_name_prompt()
+    playerLevel = gen.generate_random_int()
+    print(f"Your name is {playerName}? What a stupid name! You are a level {playerLevel} wizard.")
+    game_loop()
+    print("Do you wish to play again? A (Yes) | B (No)")
+    player_input = input()
+    if player_input.upper() == "B":
+        break
