@@ -6,8 +6,8 @@ class Wizard:
         self.Level = level
 
 
-def battle_wizard(playerlevel):
-    if Level <= playerlevel:
+def battle(enemy_level, player_level):
+    if enemy_level <= player_level:
         return True
     else:
         return False
