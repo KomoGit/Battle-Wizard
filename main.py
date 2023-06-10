@@ -8,13 +8,13 @@ def interpret_user_input(inpt, wizard):
             print(f"You killed {wizard.Name} with spell: \"{gen.generate_random_spell()}\"")
         else:
             print(f"{wizard.Name} killed you with spell: \"{gen.generate_random_spell()}\"")
-            exit(0)
+            return False
     elif inpt.upper() == "B":
         if gen.generate_random_int() == gen.generate_random_int():
             print(f"You successfully escaped {wizard.Name}")
         else:
             print(f"{wizard.Name} killed you with spell: \"{gen.generate_random_spell()}\"")
-            exit(0)
+            return False
     elif inpt.upper() == "C":
         print(f"You are level - {playerLevel}, While the enemy is {wizard.Level}")
     else:
@@ -26,7 +26,9 @@ def game_loop():
         enemy = w.Wizard(gen.generate_wizard_name(), gen.generate_random_int())
         print(f"A wild wizard named {enemy.Name} appeared. Wizard is level : {enemy.Level}")
         print("Press A to Attack || Press B to Run Away || Press C to Show Stats")
-        interpret_user_input(input(), enemy)
+        stat = interpret_user_input(input(), enemy)
+        if not stat:
+            break
 
 
 # This thing is only used once at the start of the game.
@@ -47,3 +49,5 @@ playerName = player_name_prompt()
 playerLevel = gen.generate_random_int()
 print(f"Your name is {playerName}? What a stupid name! You are a level {playerLevel} wizard.")
 game_loop()
+print("Do you wish to play again? A (Yes) | B (No)")
+player_input = input()
