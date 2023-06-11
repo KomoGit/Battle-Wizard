@@ -6,17 +6,16 @@ def interpret_user_input(inpt, wizard):
     if inpt.upper() == "A":
         if w.battle(wizard.Level, player_level=playerLevel):
             print(f"You killed {wizard.Name} with spell: \"{gen.generate_random_spell()}\"")
+            return True
         else:
             print(f"{wizard.Name} killed you with spell: \"{gen.generate_random_spell()}\"")
             return False
     elif inpt.upper() == "B":
-        if gen.generate_random_int() == gen.generate_random_int():
+        if wizard.Level > gen.generate_random_int():
             print(f"You successfully escaped {wizard.Name}")
         else:
             print(f"{wizard.Name} killed you with spell: \"{gen.generate_random_spell()}\"")
             return False
-    elif inpt.upper() == "C":
-        print(f"You are level - {playerLevel}, While the enemy is {wizard.Level}")
     else:
         print("Invalid input.")
 
@@ -25,7 +24,7 @@ def game_loop():
     while True:
         enemy = w.Wizard(gen.generate_wizard_name(), gen.generate_random_int())
         print(f"A wild wizard named {enemy.Name} appeared. Wizard is level : {enemy.Level}")
-        print("Press A to Attack || Press B to Run Away || Press C to Show Stats")
+        print("Press A to Attack || Press B to Run Away")
         stat = interpret_user_input(input(), enemy)
         if not stat:
             break
@@ -53,4 +52,5 @@ while True:
     print("Do you wish to play again? A (Yes) | B (No)")
     player_input = input()
     if player_input.upper() == "B":
+        print("Goodbye!")
         break
